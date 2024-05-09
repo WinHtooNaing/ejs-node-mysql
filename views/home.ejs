@@ -1,0 +1,44 @@
+<%- include("./includes/header") %>
+<h1>Home Page</h1>
+<a href="create" style="margin-bottom: 20px">Create A Post</a>
+<% if(postsArr.length === 0){ %>
+<div>
+  <h1>Nothing to see ?</h1>
+  <p
+    style="
+      text-align: center;
+      font-size: 20px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    "
+  >
+    Create a new post now !!!
+  </p>
+</div>
+<% }%> <% for(let post of postsArr){ %>
+<div
+  style="
+    background: #f1f1f1;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: inset #f1f1f1;
+  "
+>
+  <h2
+    style="
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    "
+  >
+    <%= post.title %>
+  </h2>
+  <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+    ><%= post.description %></span
+  >
+
+  <a href="edit/<%= post.id %>" style="width: fit-content;">Edit Post</a>
+  <form action="delete/<%= post.id %>" method="post" style="margin: 0;padding: 10px 0;">
+  <input type="text" name="postId" value="<%= post.id %>" hidden >
+    <button type="submit" style="margin: 0 ;background: darkred;" onclick="return confirm('Are you sure to delete this item?')">Delete</button>
+  </form>
+</div>
+<% }%> <%- include("./includes/footer") %>

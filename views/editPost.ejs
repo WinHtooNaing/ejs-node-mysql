@@ -1,0 +1,24 @@
+<%- include("./includes/header") %>
+
+<h1>Edit Post</h1>
+<form action="/update-post" method="post">
+  <input type="text" name="postId" value="<%= post.id %>" hidden >
+  <div>
+    <label for="title">Enter title</label>
+    <input type="text" id="title" name="title" required value="<%= post.title %>"/>
+  </div>
+  
+  <div>
+    <label for="description">Enter description</label>
+    <textarea
+      name="description"
+      id="description"
+      cols="30"
+      rows="10"
+    ><%= post.description %></textarea>
+  </div>
+    <button>Update</button>
+    <a href="/">Back</a>
+ 
+</form>
+<%- include("./includes/footer") %>
